@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Handlebars Demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="icon" href="favicon.ico">
+    <link href="css/styles.css" type="text/css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.1.2/handlebars.min.js"></script>
+    <script src="./templates/helpers.js"></script>
+</head>
+
+<body>
+    <script id="header" type="text/x-handlebars-template">
+        <!-- html escaping w/ brackets -->
+        {{{header}}}
+    </script>
+    <script src="templates/header.js"></script>
+
+    <script id="main-navigation" type="text/x-handlebars-template">
+        <!-- uses custom navigation helper -->
+        {{#customNav nav}}
+        <a href="{{url}}" class="main-nav__link">{{linkText}}</a>
+        {{/customNav}}
+    </script>
+    <script src="templates/main-navigation.js"></script>
+
+    <script id="people" type="text/x-handlebars-template">
+        <section class="wrapper person-detail">
+                {{{people.0.detailImgSource}}}
+                <h1>{{people.0.firstName}} {{people.0.lastName}}</h1>
+                <p>{{people.0.bio}}</p>
+                <hr>
+                {{#list people}}
+                <a href="/{{firstName}}-{{lastName}}.html">{{firstName}} {{lastName}}</a>
+                {{/list}}
+            </section>
+    </script>
+    <script src="templates/people.js"></script>
+
+
+    <script id="footer" type="text/x-handlebars-template">
+        <!-- html escaping w/ brackets -->
+        {{{footer}}}
+    </script>
+    <script src="templates/footer.js"></script>
+</body>
+</html>
